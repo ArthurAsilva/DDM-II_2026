@@ -1,0 +1,202 @@
+// ========================================
+// EXEMPLO 1: CONCEITOS BÁSICOS DE KOTLIN
+// ========================================
+
+
+
+
+
+// 1. VARIÁVEIS
+// ============
+// var = variável que PODE mudar
+// val = variável que NÃO PODE mudar (constante)
+
+
+
+
+
+
+var nome = "João"        // Pode mudar depois
+val idade = 20           // NÃO pode mudar
+nome = "Maria"           // ✅ OK
+// idade = 21            // ❌ ERRO! val não muda
+
+
+
+
+
+
+
+
+
+// Kotlin "adivinha" o tipo automaticamente:
+var numero = 10          // Int (número inteiro)
+var preco = 19.99        // Double (número decimal)
+var ativo = true         // Boolean (verdadeiro/falso)
+
+// Mas você pode especificar o tipo:
+var contador: Int = 0
+var mensagem: String = "Olá"
+
+
+
+
+
+
+
+
+// 2. STRINGS (TEXTOS)
+// ===================
+val nome2 = "Carlos"
+val sobrenome = "Silva"
+
+// Concatenação antiga (Java style):
+val nomeCompleto1 = nome2 + " " + sobrenome
+
+// Interpolação de strings (Kotlin style) - MAIS FÁCIL:
+val nomeCompleto2 = "$nome2 $sobrenome"
+val apresentacao = "Meu nome é $nome2 e tenho ${idade + 5} anos"
+
+
+// 3. CONDICIONAIS (IF/ELSE)
+// =========================
+val nota = 7.5
+
+if (nota >= 7.0) {
+    println("Aprovado!")
+} else if (nota >= 5.0) {
+    println("Recuperação")
+} else {
+    println("Reprovado")
+}
+
+// Kotlin permite if como expressão (retorna valor):
+val status = if (nota >= 7.0) "Aprovado" else "Reprovado"
+
+
+// 4. WHEN (parecido com switch)
+// =============================
+val dia = 3
+
+when (dia) {
+    1 -> println("Segunda")
+    2 -> println("Terça")
+    3 -> println("Quarta")
+    4 -> println("Quinta")
+    5 -> println("Sexta")
+    else -> println("Fim de semana")
+}
+
+
+// 5. LOOPS (REPETIÇÕES)
+// =====================
+
+// For tradicional:
+for (i in 1..5) {           // De 1 até 5
+    println("Contando: $i")
+}
+
+// For com lista:
+val frutas = listOf("Maçã", "Banana", "Laranja")
+for (fruta in frutas) {
+    println("Fruta: $fruta")
+}
+
+// While:
+var x = 0
+while (x < 3) {
+    println("x = $x")
+    x++
+}
+
+
+// 6. FUNÇÕES
+// ==========
+
+// Função simples:
+fun saudar() {
+    println("Olá!")
+}
+
+// Função com parâmetros e retorno:
+fun somar(a: Int, b: Int): Int {
+    return a + b
+}
+
+// Função simplificada (uma linha):
+fun multiplicar(a: Int, b: Int) = a * b
+
+// Chamando funções:
+saudar()
+val resultado = somar(5, 3)        // resultado = 8
+val produto = multiplicar(4, 7)    // produto = 28
+
+
+// 7. NULLABLE (valores que podem ser null)
+// =========================================
+
+var nomeOpcional: String? = null   // ? = pode ser null
+nomeOpcional = "Pedro"
+
+// Safe call (só executa se não for null):
+println(nomeOpcional?.length)
+
+// Elvis operator (valor padrão se for null):
+val tamanho = nomeOpcional?.length ?: 0
+
+
+// 8. LISTAS E ARRAYS
+// ==================
+
+// Lista imutável (não pode adicionar/remover):
+val numeros = listOf(1, 2, 3, 4, 5)
+
+// Lista mutável (pode modificar):
+val nomes = mutableListOf("Ana", "Bruno")
+nomes.add("Carlos")
+nomes.remove("Ana")
+
+// Acessar elementos:
+println(nomes[0])      // Primeiro elemento
+println(nomes.size)    // Tamanho da lista
+
+
+// 9. CLASSES E OBJETOS (Básico)
+// ==============================
+
+class Pessoa(val nome: String, var idade: Int) {
+    
+    fun apresentar() {
+        println("Olá, sou $nome e tenho $idade anos")
+    }
+}
+
+// Criando objetos:
+val pessoa1 = Pessoa("João", 25)
+val pessoa2 = Pessoa("Maria", 30)
+
+pessoa1.apresentar()
+println(pessoa2.nome)
+pessoa2.idade = 31  // pode mudar (var)
+
+
+// ========================================
+// COMPARAÇÃO: JAVA vs KOTLIN
+// ========================================
+
+/*
+JAVA:
+String nome = "João";
+System.out.println("Olá, " + nome);
+
+KOTLIN:
+val nome = "João"
+println("Olá, $nome")
+
+VANTAGENS DO KOTLIN:
+✅ Menos código (mais conciso)
+✅ Segurança contra null
+✅ Sem ponto-e-vírgula
+✅ Interpolação de strings
+✅ Funções mais simples
+*/
